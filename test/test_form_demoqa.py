@@ -1,3 +1,5 @@
+from operator import and_
+
 from selene.support.shared import browser
 from selene import be, have
 import os
@@ -25,11 +27,15 @@ def test_fill_and_submit_form(set_options_in_browser):
     browser.element("#react-select-4-input").should(be.blank).type('Jaipur').press(Keys.ENTER)
     browser.element("#submit").should(be.clickable).press(Keys.ENTER)
     browser.element("[class='modal-title h4']").should(have.exact_text('Thanks for submitting the form'))
-    browser.all("table>tbody>tr").should(have.exact_texts('Student Name testName testLastName',
-                                                          'Student Email testName@test.kk', 'Gender Male',
-                                                          'Mobile 9232455644', 'Date of Birth 10 March,2000',
-                                                          'Subjects Maths, History', 'Hobbies Reading',
-                                                          'Picture testPicture.png', 'Address testAddress',
-                                                          'State and City Rajasthan Jaipur'))
+    browser.all("table>tbody>tr:nth-of-type(1)").should(have.exact_texts('Student Name testName testLastName'))
+    browser.all("table>tbody>tr:nth-of-type(2)").should(have.exact_texts('Student Email testName@test.kk'))
+    browser.all("table>tbody>tr:nth-of-type(3)").should(have.exact_texts('Gender Male'))
+    browser.all("table>tbody>tr:nth-of-type(4)").should(have.exact_texts('Mobile 9232455644'))
+    browser.all("table>tbody>tr:nth-of-type(5)").should(have.exact_texts('Date of Birth 10 March,2000'))
+    browser.all("table>tbody>tr:nth-of-type(6)").should(have.exact_texts('Subjects Maths, History'))
+    browser.all("table>tbody>tr:nth-of-type(7)").should(have.exact_texts('Hobbies Reading'))
+    browser.all("table>tbody>tr:nth-of-type(8)").should(have.exact_texts('Picture testPicture.png'))
+    browser.all("table>tbody>tr:nth-of-type(9)").should(have.exact_texts('Address testAddress'))
+    browser.all("table>tbody>tr:nth-of-type(10)").should(have.exact_texts('State and City Rajasthan Jaipur'))
     browser.element('#closeLargeModal').should(be.clickable).click()
 
