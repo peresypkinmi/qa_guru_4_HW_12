@@ -68,6 +68,21 @@ class RegistrationForm:
         browser.element("#submit").press(Keys.ENTER)
 
 
+    def fill_registration_form(self, *subjects, first_name, last_name, email, phone, address, state, city):
+        self.type_first_name_field(first_name)
+        self.type_last_name_field(last_name)
+        self.choose_radio_male_gender()
+        self.choose_date_of_birth()
+        self.type_phone_field(phone)
+        self.type_email_field(email)
+        self.type_current_address(address)
+        self.choose_subjects(*subjects)
+        self.choose_hobbies()
+        self.upload_picture()
+        self.select_state(state)
+        self.select_city(city)
+
+
     def assert_typed_form(self):
         browser.element("[class='modal-title h4']").should(have.exact_text('Thanks for submitting the form'))
         browser.all("table>tbody>tr:nth-of-type(1)").should(have.exact_texts('Student Name Ivan Ivanov'))
