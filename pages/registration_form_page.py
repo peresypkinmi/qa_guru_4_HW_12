@@ -2,6 +2,8 @@ import os
 from selene import be, have
 from selene.support.shared import browser
 from selenium.webdriver import Keys
+from data.User import User
+
 
 
 class RegistrationForm:
@@ -38,9 +40,9 @@ class RegistrationForm:
         browser.element(f'[aria-label="Choose Friday, March 10th, 2000"]').click()
 
 
-    def choose_subjects(self, *subjects):
-        browser.element("#subjectsInput").should(be.blank).click()
-        [browser.element("#subjectsInput").should(be.blank).type(subject).press(Keys.ENTER) for subject in subjects]
+    def choose_subjects(self, subjects):
+        browser.element("#subjectsInput").click()
+        [browser.element("#subjectsInput").type(subject).press(Keys.ENTER) for subject in subjects]
 
 
     def choose_hobbies(self):
@@ -68,19 +70,19 @@ class RegistrationForm:
         browser.element("#submit").press(Keys.ENTER)
 
 
-    def fill_registration_form(self, *subjects, first_name, last_name, email, phone, address, state, city):
-        self.type_first_name_field(first_name)
-        self.type_last_name_field(last_name)
+    def fill_registration_form(self, User):
+        self.type_first_name_field(User.firstname)
+        self.type_last_name_field(User.lastname)
         self.choose_radio_male_gender()
         self.choose_date_of_birth()
-        self.type_phone_field(phone)
-        self.type_email_field(email)
-        self.type_current_address(address)
-        self.choose_subjects(*subjects)
+        self.type_phone_field(User.phone)
+        self.type_email_field(User.email)
+        self.type_current_address(User.address)
+        self.choose_subjects(User.subjects)
         self.choose_hobbies()
         self.upload_picture()
-        self.select_state(state)
-        self.select_city(city)
+        self.select_state(User.state)
+        self.select_city(User.city)
 
 
     def assert_typed_form(self):
