@@ -1,4 +1,6 @@
 import os
+
+import allure
 from selene import be, have
 from selene.support.shared import browser
 from selenium.webdriver import Keys
@@ -8,6 +10,7 @@ from data.User import User
 
 class RegistrationForm:
 
+    @allure.step("Переход на форму регистрации")
     def open_student_registration_form(self):
         browser.open('automation-practice-form')
 
@@ -65,11 +68,11 @@ class RegistrationForm:
     def select_city(self, value):
         browser.element("#react-select-4-input").type(value).press(Keys.ENTER)
 
-
+    @allure.step("Отправка формы регистрации")
     def submit_form(self):
         browser.element("#submit").press(Keys.ENTER)
 
-
+    @allure.step("Заполнение формы регистрации")
     def fill_registration_form(self, User):
         self.type_first_name_field(User.firstname)
         self.type_last_name_field(User.lastname)
@@ -84,7 +87,7 @@ class RegistrationForm:
         self.select_state(User.state)
         self.select_city(User.city)
 
-
+    @allure.step("Проверка полей формы")
     def assert_typed_form(self):
         browser.element("[class='modal-title h4']").should(have.exact_text('Thanks for submitting the form'))
         browser.all("table>tbody>tr:nth-of-type(1)").should(have.exact_texts('Student Name Ivan Ivanov'))
