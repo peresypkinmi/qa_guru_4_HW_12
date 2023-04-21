@@ -50,7 +50,7 @@ class RegistrationForm:
 
 
     def upload_picture(self):
-        os.chdir(f'{os.getcwd()}/../source')
+        os.chdir(f'{os.getcwd()}/source')
         browser.element("#uploadPicture").type(os.getcwd() + '/testPicture.png')
 
 
