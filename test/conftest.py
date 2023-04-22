@@ -19,6 +19,7 @@ def set_options_in_browser(get_driver_config):
     attach.add_logs()
     attach.add_video()
 
+
     browser.quit()
 
 
