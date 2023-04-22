@@ -1,13 +1,13 @@
 {
-  "base": {
+"base": {
     "logo": "",
-    "project": "",
-    "environment": "",
-    "comment": "",
+    "project": "some project",
+    "environment": "some env",
+    "comment": "some comment",
     "reportLink": "",
-    "language": "ru",
-    "allureFolder": "",
-    "enableChart": false
+    "language": "en",
+    "allureFolder": "build/allure-report/",
+    "enableChart": true
   },
   "telegram": {
     "token": "6003386539:AAFVp_O1S_99hQHynJScpIQaD7WptoX3o08",
