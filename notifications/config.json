@@ -1,0 +1,16 @@
+{
+  "base": {
+    "logo": "",
+    "project": "",
+    "environment": "",
+    "comment": "",
+    "reportLink": "",
+    "language": "ru",
+    "allureFolder": "",
+    "enableChart": false
+  },
+  "telegram": {
+    "token": "6003386539:AAFVp_O1S_99hQHynJScpIQaD7WptoX3o08",
+    "chat": "55410925",
+    "replyTo": ""
+  }}
